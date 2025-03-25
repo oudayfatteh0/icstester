@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://oudayfatteh0.github.io/icstester/sitemap.xml
