@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>iCal Tester</title>
+  <!-- Add favicon -->
+  <link rel="icon" href="favicon.png" type="image/png">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -231,30 +233,47 @@
   </style>
 </head>
 <body class="bg-gray-50 min-h-screen font-sans">
-  <div id="app" class="container mx-auto p-4 max-w-5xl">
-    <div class="flex flex-col items-center justify-center mb-8">
-      <h1 class="text-3xl font-bold text-gray-800 mb-2">iCal Tester</h1>
-      <p class="text-gray-500 text-center max-w-lg">Test and visualize iCal feeds from any URL with CORS support</p>
-      <div class="mt-4 flex items-center">
-        <span class="text-sm text-gray-500 mr-2">Powered by</span>
-        <img src="logo.png" alt="Superhost Logo" class="h-8">
+  <!-- Add a navbar -->
+  <nav class="bg-white shadow-sm">
+    <div class="container mx-auto px-4 py-3 max-w-6xl">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center space-x-4">
+          <img src="logo-ics.png" alt="iCal Tester Logo" class="h-10">  
+        </div>
+        <div class="flex items-center space-x-6">
+          <a href="https://github.com/oudayfatteh0/icstester" target="_blank" class="text-gray-600 hover:text-primary-600 transition-colors duration-200">Documentation</a>
+          <a href="https://github.com/oudayfatteh0/icstester" target="_blank" class="text-gray-600 hover:text-primary-600 transition-colors duration-200">About</a>
+          <a href="https://github.com/oudayfatteh0/" target="_blank" class="text-gray-600 hover:text-primary-600 transition-colors duration-200">
+            <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
+  </nav>
+
+  <div id="app" class="container mx-auto px-4 py-8 max-w-6xl">
+    <!-- Simplify the header since we now have a navbar -->
+    <div class="flex flex-col items-center justify-center mb-10">
+      <h2 class="text-2xl font-medium text-gray-700 mb-3 text-center">Test and visualize iCal feeds from any URL</h2>
+      <p class="text-gray-500 text-center max-w-2xl">A simple tool to validate and display calendar data with CORS support</p>
+    </div>
     
-    <div class="bg-white rounded-xl shadow-custom p-6 mb-6 transition-all duration-300">
-      <div class="mb-6">
-        <label for="icalUrl" class="block text-sm font-medium text-gray-700 mb-1">iCal URL</label>
+    <div class="bg-white rounded-xl shadow-lg p-8 mb-8 transition-all duration-300">
+      <div class="mb-8">
+        <label for="icalUrl" class="block text-base font-medium text-gray-700 mb-2">iCal URL</label>
         <div class="relative">
           <input 
             id="icalUrl" 
             v-model="icalUrl" 
             type="url" 
             placeholder="https://example.com/calendar.ics" 
-            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+            class="w-full px-5 py-4 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
           >
           <button 
             @click="fetchIcal" 
-            class="absolute right-2 top-2 bg-primary-500 hover:bg-primary-600 text-white font-medium py-1 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-colors duration-200"
+            class="absolute right-3 top-3 bg-primary-500 hover:bg-primary-600 text-white font-medium py-2 px-6 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-colors duration-200 text-base"
             :disabled="isLoading || !icalUrl"
           >
             <span v-if="isLoading">
@@ -378,7 +397,7 @@
       <p class="text-gray-500 text-xs">iCal Tester - A simple tool to test and visualize iCal feeds</p>
       <div class="mt-2 flex items-center justify-center">
         <span class="text-xs text-gray-400 mr-2">Powered by</span>
-        <img src="logo.png" alt="Superhost Logo" class="h-6">
+        <img src="logo.png" alt="Company Logo" class="h-6">
       </div>
     </footer>
 
